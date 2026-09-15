@@ -1,0 +1,74 @@
+{
+  "meta": {
+    "title": "Fistashion — The Bakery House",
+    "description": "A bakery-coffee house in Medina. Opening soon beside the Islamic University."
+  },
+  "nav": {
+    "about": "About",
+    "offerings": "The house",
+    "location": "Location",
+    "franchise": "Franchise",
+    "contact": "Contact"
+  },
+  "hero": {
+    "badge": "Opening soon",
+    "city": "Medina",
+    "ctaLocation": "Find us",
+    "ctaFranchise": "Franchise"
+  },
+  "about": {
+    "title": "The house",
+    "lead": "We are not only a coffee house and not only a bakery. We are one house.",
+    "p1": "Pastry and confectionery are made here. Good coffee should be a joy for everyone — that is why our prices stay honest, so a small pleasure is possible every day.",
+    "p2": "We will be open around the clock, on a visible first line beside the Islamic University, where there is almost no place like this."
+  },
+  "offerings": {
+    "title": "What we bake and pour",
+    "lead": "Every day we join the scent of fresh baking with the taste of real coffee.",
+    "pastry": "Puff pastry",
+    "confectionery": "Confectionery",
+    "bread": "Bread",
+    "breakfasts": "Breakfasts",
+    "coffee": "Coffee"
+  },
+  "location": {
+    "title": "Where we are",
+    "p1": "A convenient, visible place beside the Islamic University. Comfortable parking — come by car with family or friends.",
+    "p2": "We sit on the first line, easy to find and easy to read from the street.",
+    "directions": "Open in Google Maps",
+    "copy": "Copy address",
+    "copied": "Copied to clipboard"
+  },
+  "atmosphere": {
+    "title": "Character, without the distance",
+    "lead": "There is character, aesthetics, and a little ceremony. The main thing is this: we stay open to everyone.",
+    "items": {
+      "interior": "Atmosphere and interior",
+      "assortment": "Assortment and presentation",
+      "guests": "The people we serve",
+      "style": "The visual language of the brand",
+      "idea": "The idea we tell",
+      "service": "A high level of service"
+    }
+  },
+  "franchise": {
+    "title": "Grow the house with us",
+    "lead": "We are open to partners who want to develop this project. If you want to build a Fistashion of your own, write — we will talk through the details.",
+    "name": "Name",
+    "contact": "Email or phone",
+    "city": "City",
+    "message": "Message",
+    "submit": "Send inquiry",
+    "success": "Your mail app should open with the inquiry. If it does not, write to us directly.",
+    "copyEmail": "Copy email",
+    "copied": "Copied",
+    "errors": {
+      "name": "Please tell us your name.",
+      "contact": "Please leave an email or a phone number.",
+      "message": "Please write a short message."
+    }
+  },
+  "footer": {
+    "rights": "The Bakery House, Medina"
+  }
+}

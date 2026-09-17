@@ -18,7 +18,7 @@
   },
   "manifesto": {
     "title": "More than a bakery.",
-    "lead": "FISTASHION is created around the idea that every morning deserves something memorable. We combine carefully crafted bakery products, specialty coffee, refined interiors and warm Saudi hospitality to create an experience guests want to remember — and share."
+    "lead": "FISTASHION is more than a bakery and café — it is a place where emotion, style, and flavor unite into a singular atmosphere. Our interior is crafted in a distinctive deep pistachio green, evoking warmth, comfort, and inspiration. Every detail is curated so guests return for the harmony and aesthetics."
   },
   "exclusive": {
     "title": "Project Exclusive",
@@ -106,6 +106,8 @@
     "title": "Connect.",
     "lead": "Have a question, collaboration idea or simply want to say hello? We’d love to hear from you.",
     "visit": "Visit us",
+    "phone": "Phone & WhatsApp",
+    "emailLabel": "Email",
     "follow": "Follow us",
     "name": "Your name",
     "email": "Email",

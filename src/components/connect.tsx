@@ -21,12 +21,42 @@ export async function Connect() {
               <p className="mt-2 text-cream">{SITE.fullAddress}</p>
             </div>
             <div>
+              <p className="uppercase tracking-[0.18em] text-cream/45">{t("phone")}</p>
+              <div className="mt-2 flex flex-wrap items-center gap-4">
+                <a
+                  href={SITE.phoneHref}
+                  className="text-cream underline underline-offset-4 hover:text-yellow transition-colors"
+                  dir="ltr"
+                >
+                  {SITE.phoneDisplay}
+                </a>
+                <span className="text-cream/30">·</span>
+                <a
+                  href={SITE.whatsappHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-cream/80 underline underline-offset-4 hover:text-yellow transition-colors"
+                >
+                  WhatsApp
+                </a>
+              </div>
+            </div>
+            <div>
+              <p className="uppercase tracking-[0.18em] text-cream/45">{t("emailLabel")}</p>
+              <a
+                href={`mailto:${SITE.email}`}
+                className="mt-2 inline-block text-cream underline underline-offset-4 hover:text-yellow transition-colors"
+              >
+                {SITE.email}
+              </a>
+            </div>
+            <div>
               <p className="uppercase tracking-[0.18em] text-cream/45">{t("follow")}</p>
               <a
                 href={SITE.instagramHref}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-2 inline-block text-cream underline underline-offset-4"
+                className="mt-2 inline-block text-cream underline underline-offset-4 hover:text-yellow transition-colors"
               >
                 @{SITE.instagram.toLowerCase()}
               </a>

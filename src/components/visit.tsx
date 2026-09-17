@@ -32,9 +32,15 @@ export async function Visit() {
       <p className="mt-6 max-w-xl text-lg text-ink">{t("lead")}</p>
       <p className="mt-2 text-sm uppercase tracking-[0.16em] text-ink-muted">{t("hours")}</p>
       <p className="mt-4 text-sm text-ink">{SITE.fullAddress}</p>
-      <div className="mt-8 flex flex-wrap gap-6 text-xs font-semibold uppercase tracking-[0.18em]">
+      <div className="mt-8 flex flex-wrap items-center gap-6 text-xs font-semibold uppercase tracking-[0.18em]">
         <a href={mapsHref} target="_blank" rel="noreferrer" className="underline underline-offset-4">
           {t("maps")}
+        </a>
+        <a href={SITE.phoneHref} className="underline underline-offset-4" dir="ltr">
+          {SITE.phoneDisplay}
+        </a>
+        <a href={`mailto:${SITE.email}`} className="underline underline-offset-4">
+          {SITE.email}
         </a>
         <a href={SITE.instagramHref} target="_blank" rel="noreferrer" className="underline underline-offset-4">
           {t("instagram")}

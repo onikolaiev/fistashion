@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { LanguageSwitcher } from "@/components/language-switcher";
+import { NavBrand } from "@/components/nav-brand";
 
 const NAV_ITEMS = [
   { href: "#menu", key: "menu" },
@@ -21,13 +22,7 @@ export async function Header() {
 
       <header className="fixed inset-x-0 top-0 z-50 bg-green/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-6 py-5 md:px-10">
-          <a
-            href="#top"
-            className="font-serif text-lg tracking-[0.14em] text-cream uppercase"
-            aria-label="Fistashion The Bakery House"
-          >
-            FISTASHION
-          </a>
+          <NavBrand />
 
           <nav className="hidden items-center gap-8 md:flex" aria-label="Main Navigation">
             {NAV_ITEMS.map((item) => (

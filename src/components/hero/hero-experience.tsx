@@ -117,7 +117,7 @@ export function HeroExperience({
     <section
       ref={containerRef}
       id="top"
-      className="relative flex min-h-[82vh] items-center overflow-hidden bg-cream px-6 pt-24 pb-12 md:min-h-[86vh] md:px-12 md:pt-28 md:pb-16"
+      className="relative flex min-h-[82vh] items-center overflow-hidden bg-cream px-6 pt-24 pb-14 md:min-h-[88vh] md:px-12 md:pt-28 md:pb-24"
     >
       {/* 1. Vibrant, Clearly Visible Grand Salon Background */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -252,7 +252,7 @@ export function HeroExperience({
             {/* Structured Luxury Feature Strip */}
             <div
               data-hero-fade
-              className="mt-7 w-full max-w-xl rounded-2xl border border-gold/35 bg-cream-pure/90 p-4 shadow-md backdrop-blur-md"
+              className="mt-8 w-full max-w-xl rounded-2xl border border-gold/35 bg-cream-pure/90 p-4 shadow-md backdrop-blur-md lg:mt-9"
             >
               <div className="grid grid-cols-3 gap-3 text-center sm:gap-4">
                 <div className="px-1">
@@ -315,7 +315,7 @@ export function HeroExperience({
               </div>
 
               {/* Floating secondary accent card (Signature Pistache Dessert) */}
-              <div className="absolute -bottom-7 -left-5 hidden w-52 overflow-hidden rounded-2xl border-2 border-cream-pure bg-cream p-2 shadow-2xl sm:block md:-bottom-8 md:-left-8 md:w-56">
+              <div className="absolute -bottom-14 -left-5 hidden w-52 overflow-hidden rounded-2xl border-2 border-cream-pure bg-cream p-2 shadow-2xl sm:block md:-bottom-20 md:-left-8 md:w-56 lg:-bottom-22">
                 <div className="relative aspect-square overflow-hidden rounded-xl">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img

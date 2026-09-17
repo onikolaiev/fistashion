@@ -20,7 +20,7 @@ export function validateInquiry(values: InquiryValues): InquiryErrors {
 }
 
 export function composeInquiryMailto(values: InquiryValues): string {
-  const subject = `Fistashion franchise — ${values.name.trim()}`;
+  const subject = `Fistashion — ${values.name.trim()}`;
   const body = [
     `Name: ${values.name.trim()}`,
     `Contact: ${values.contact.trim()}`,

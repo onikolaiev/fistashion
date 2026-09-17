@@ -15,31 +15,20 @@ export function LanguageSwitcher() {
   const pathname = usePathname();
 
   return (
-    <nav
-      aria-label="Language selection"
-      className="flex items-center gap-1.5 rounded-full border border-gold/25 bg-cream-soft/70 px-2.5 py-1 text-xs tracking-wider backdrop-blur-xs"
-    >
-      {routing.locales.map((code, index) => {
+    <nav aria-label="Language selection" className="flex items-center gap-2 text-[11px] tracking-[0.14em]">
+      {routing.locales.map((code) => {
         const isActive = locale === code;
         return (
-          <span key={code} className="flex items-center">
-            {index > 0 ? (
-              <span className="mx-1 text-[10px] text-gold/40" aria-hidden="true">
-                •
-              </span>
-            ) : null}
-            <Link
-              href={pathname}
-              locale={code}
-              className={`px-1.5 py-0.5 text-[11px] font-medium transition-colors ${
-                isActive
-                  ? "rounded-full bg-green text-cream font-semibold"
-                  : "text-charcoal-muted hover:text-green"
-              }`}
-            >
-              {LABELS[code]}
-            </Link>
-          </span>
+          <Link
+            key={code}
+            href={pathname}
+            locale={code}
+            className={`uppercase transition-colors ${
+              isActive ? "text-cream" : "text-cream/45 hover:text-cream"
+            }`}
+          >
+            {LABELS[code]}
+          </Link>
         );
       })}
     </nav>

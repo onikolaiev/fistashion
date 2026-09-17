@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Manrope, Noto_Naskh_Arabic } from "next/font/google";
+import { Bodoni_Moda, Noto_Naskh_Arabic, Ysabeau } from "next/font/google";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -7,15 +7,16 @@ import { routing } from "@/i18n/routing";
 import { SITE, assetPath } from "@/lib/site";
 import "../globals.css";
 
-const serif = Cormorant_Garamond({
-  subsets: ["latin", "cyrillic"],
+const serif = Bodoni_Moda({
+  subsets: ["latin"],
   variable: "--font-serif-face",
   weight: ["400", "500", "600", "700"],
 });
 
-const sans = Manrope({
+const sans = Ysabeau({
   subsets: ["latin", "cyrillic"],
   variable: "--font-sans-face",
+  weight: ["400", "500", "600", "700"],
 });
 
 const arabic = Noto_Naskh_Arabic({
@@ -67,7 +68,7 @@ export async function generateMetadata({
       type: "website",
       images: [
         {
-          url: "/scenes/photo-salon-saudi-men.png",
+          url: "/offerings/confectionery.jpg",
           width: 1200,
           height: 900,
           alt: "Fistashion The Bakery House Medina",
@@ -78,7 +79,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: `${t("title")} | ${SITE.brand}`,
       description: t("description"),
-      images: ["/scenes/photo-salon-saudi-men.png"],
+      images: ["/offerings/confectionery.jpg"],
     },
     icons: { icon: assetPath("/favicon.svg") },
   };
@@ -102,9 +103,9 @@ export default async function LocaleLayout({
     alternateName: "فيستاشيون — دار المخبوزات والقهوة المختصة",
     url: `${SITE.domain}/${locale}`,
     logo: `${SITE.domain}/brand/logo.svg`,
-    image: `${SITE.domain}/scenes/photo-salon-saudi-men.png`,
+    image: `${SITE.domain}/offerings/confectionery.jpg`,
     description:
-      "A luxury Parisian-inspired bakery and specialty coffee salon in Medina Al-Munawwarah.",
+      "Premium bakery and café in Medina — pastry, specialty coffee, and warm Saudi hospitality.",
     address: {
       "@type": "PostalAddress",
       streetAddress: SITE.street,

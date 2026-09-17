@@ -1,54 +1,41 @@
 @import "tailwindcss";
 
 :root {
-  /* Light Luxury & French/Arabian Bakery Palette */
-  --bg-cream: #FAF7F2;
-  --bg-cream-soft: #F4EFE6;
-  --bg-cream-pure: #FCFAF6;
-  --bg-sand: #EFE9DE;
-  
-  /* Brand Emerald */
-  --green: #0F2418;
-  --green-dark: #091810;
-  --green-mid: #1A3828;
-  --green-soft: #234B36;
-  
-  /* Gold Accents */
-  --gold: #C5A25D;
-  --gold-light: #DFC793;
-  --gold-pale: #F3E9D2;
-  --gold-dark: #8F6F33;
-  
-  /* Text Neutrals */
-  --charcoal: #1C2420;
-  --charcoal-muted: #56645D;
-  --charcoal-light: #839189;
-  
-  /* Borders */
-  --border-gold: rgba(197, 162, 93, 0.28);
-  --border-gold-subtle: rgba(197, 162, 93, 0.16);
-  --border-dark: rgba(15, 36, 24, 0.12);
+  --bg-green: #0b211a;
+  --bg-green-mid: #123028;
+  --bg-green-soft: #1a3d32;
+  --bg-yellow: #f4c430;
+  --bg-cream: #f3ebdd;
+  --bg-cream-soft: #e8dcc8;
+  --bg-cream-pure: #f8f3ea;
+
+  --ink: #0b211a;
+  --ink-muted: #3d5249;
+  --cream: #f3ebdd;
+  --gold: #e8d5a3;
+
+  --border-cream: rgba(243, 235, 221, 0.18);
+  --border-ink: rgba(11, 33, 26, 0.12);
 }
 
 @theme inline {
+  --color-green: var(--bg-green);
+  --color-green-mid: var(--bg-green-mid);
+  --color-green-soft: var(--bg-green-soft);
+  --color-green-dark: var(--bg-green);
+  --color-yellow: var(--bg-yellow);
   --color-cream: var(--bg-cream);
   --color-cream-soft: var(--bg-cream-soft);
   --color-cream-pure: var(--bg-cream-pure);
-  --color-sand: var(--bg-sand);
-  
-  --color-green: var(--green);
-  --color-green-dark: var(--green-dark);
-  --color-green-mid: var(--green-mid);
-  --color-green-soft: var(--green-soft);
-  
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
   --color-gold: var(--gold);
-  --color-gold-light: var(--gold-light);
-  --color-gold-pale: var(--gold-pale);
-  --color-gold-dark: var(--gold-dark);
-  
-  --color-charcoal: var(--charcoal);
-  --color-charcoal-muted: var(--charcoal-muted);
-  --color-charcoal-light: var(--charcoal-light);
+  --color-gold-light: var(--gold);
+  --color-gold-pale: var(--bg-cream);
+  --color-gold-dark: #8f6f33;
+  --color-charcoal: var(--ink);
+  --color-charcoal-muted: var(--ink-muted);
+  --color-charcoal-light: #6b7c74;
 
   --font-serif: var(--font-serif-face);
   --font-sans: var(--font-sans-face);
@@ -56,14 +43,14 @@
 }
 
 html {
-  background-color: var(--bg-cream);
-  color: var(--charcoal);
+  background-color: var(--bg-green);
+  color: var(--cream);
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--bg-cream);
-  color: var(--charcoal);
+  background-color: var(--bg-green);
+  color: var(--cream);
   font-family: var(--font-sans), var(--font-arabic), sans-serif;
   min-height: 100%;
   overflow-x: hidden;
@@ -79,7 +66,7 @@ h3,
 h4 {
   font-family: var(--font-serif), var(--font-arabic), serif;
   font-weight: 500;
-  letter-spacing: 0.01em;
+  letter-spacing: -0.02em;
 }
 
 html[lang="ar"] h1,
@@ -90,22 +77,16 @@ html[lang="ar"] h4 {
 }
 
 ::selection {
-  background: var(--gold-light);
-  color: var(--green-dark);
-}
-
-/* Subtle luxury grain texture overlay */
-.luxury-noise {
-  background-image: radial-gradient(rgba(15, 36, 24, 0.03) 1px, transparent 0);
-  background-size: 24px 24px;
+  background: var(--bg-yellow);
+  color: var(--ink);
 }
 
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(24px);
   transition:
-    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .reveal-in {
@@ -114,11 +95,25 @@ html[lang="ar"] h4 {
 }
 
 .reveal-media {
-  transform: translateY(24px) scale(0.99);
+  transform: translateY(20px) scale(0.99);
 }
 
 .reveal-media.reveal-in {
   transform: translateY(0) scale(1);
+}
+
+.life-pan {
+  transform: scale(1.06);
+  animation: life-pan 22s ease-in-out infinite alternate;
+}
+
+@keyframes life-pan {
+  from {
+    transform: scale(1.06) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.12) translate3d(-1.5%, -1%, 0);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -127,5 +122,10 @@ html[lang="ar"] h4 {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  .life-pan {
+    animation: none;
+    transform: none;
   }
 }

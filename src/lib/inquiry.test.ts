@@ -44,7 +44,7 @@ describe("composeInquiryMailto", () => {
       message: "I want a shop",
     });
     expect(href.startsWith("mailto:Fistashion@gmail.com?")).toBe(true);
-    expect(href).toContain(encodeURIComponent("Fistashion franchise — Nora"));
+    expect(href).toContain(encodeURIComponent("Fistashion — Nora"));
     expect(href).toContain(encodeURIComponent("Jeddah"));
     expect(href).toContain(encodeURIComponent("I want a shop"));
   });

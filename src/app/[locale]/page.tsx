@@ -1,21 +1,17 @@
 import { hasLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
-import { About } from "@/components/about";
-import { Atmosphere } from "@/components/atmosphere";
+import { Connect } from "@/components/connect";
+import { Craft, Signature } from "@/components/craft";
+import { Exclusive } from "@/components/exclusive";
 import { Footer } from "@/components/footer";
-import { Franchise } from "@/components/franchise";
-import { GuestExperience } from "@/components/guest-experience";
 import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
-import { Location } from "@/components/location";
+import { Manifesto } from "@/components/manifesto";
 import { MobileStickyBar } from "@/components/mobile-sticky-bar";
-import { Offerings } from "@/components/offerings";
-import { Reveal } from "@/components/reveal";
-import { SceneBreak } from "@/components/scene-break";
-import { SignatureMenu } from "@/components/signature-menu";
+import { Discover, Story, Visit } from "@/components/visit";
+import { Space } from "@/components/space";
 import { routing } from "@/i18n/routing";
-import { assetPath } from "@/lib/site";
 
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const { locale } = await params;
@@ -27,35 +23,17 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
   return (
     <>
       <Header />
-      <main id="main-content" className="bg-cream">
+      <main id="main-content" className="bg-green pb-16 md:pb-0">
         <Hero />
-        <About />
-        
-        <Reveal variant="media">
-          <SceneBreak
-            src={assetPath("/scenes/photo-pastry-counter.png")}
-            subtitle="Artisanal Pâtisserie"
-            title="Crafted with French Heritage"
-            heightClass="h-[40vh] min-h-[18rem] md:h-[55vh]"
-          />
-        </Reveal>
-
-        <SignatureMenu />
-        <Offerings />
-
-        <Reveal variant="media">
-          <SceneBreak
-            src={assetPath("/scenes/photo-salon-grand-wide.png")}
-            subtitle="The Grand Salon"
-            title="An Atmosphere of Warmth & Elegance"
-            heightClass="h-[42vh] min-h-[20rem] md:h-[58vh]"
-          />
-        </Reveal>
-
-        <Atmosphere />
-        <GuestExperience />
-        <Location />
-        <Franchise />
+        <Manifesto />
+        <Exclusive />
+        <Signature />
+        <Craft />
+        <Space />
+        <Discover />
+        <Visit />
+        <Story />
+        <Connect />
       </main>
       <Footer />
       <MobileStickyBar />

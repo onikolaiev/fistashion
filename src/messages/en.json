@@ -1,74 +1,211 @@
 {
   "meta": {
-    "title": "Fistashion — The Bakery House",
-    "description": "A bakery-coffee house in Medina. Opening soon beside the Islamic University."
+    "title": "Fistashion — The Bakery House | Haute Pâtisserie & Specialty Coffee Medina",
+    "description": "An oasis of French artisanal pastry, Mediterranean pistachio creations, and specialty coffee in Medina Al-Munawwarah. Located on the 1st line beside the Islamic University."
   },
   "nav": {
-    "about": "About",
-    "offerings": "The house",
+    "about": "The House",
+    "menu": "Signature Menu",
+    "experience": "Experience",
+    "offerings": "Repertoire",
     "location": "Location",
     "franchise": "Franchise",
-    "contact": "Contact"
+    "contact": "Contact",
+    "skipToContent": "Skip to main content"
   },
   "hero": {
-    "badge": "Opening soon",
-    "city": "Medina",
-    "ctaLocation": "Find us",
-    "ctaFranchise": "Franchise"
+    "badge": "Grand Salon & Bakery",
+    "city": "Medina Al-Munawwarah",
+    "subline": "Haute Pâtisserie & Specialty Coffee",
+    "tagline": "Inspired by grand Parisian salons and genuine Medina hospitality.",
+    "lead": "Step into an oasis of white Calacatta marble, emerald green, and warm brass. Savor 72-hour slow-fermented French viennoiserie, stone-ground Mediterranean pistachios, and masterfully pulled single-origin coffee.",
+    "ctaLocation": "Find Us on Map",
+    "ctaMenu": "Explore Signatures",
+    "ctaFranchise": "Franchise Inquiry",
+    "feature1": "100% French Normandy Butter",
+    "feature2": "Rare Mediterranean Pistachios",
+    "feature3": "Direct-Trade Specialty Arabica",
+    "feature4": "First Line • Islamic University",
+    "dessertCardTitle": "Signature Pistache",
+    "dessertCardSubtitle": "Pure praline & flaky sablé"
   },
   "about": {
-    "title": "The house",
-    "lead": "We are not only a coffee house and not only a bakery. We are one house.",
-    "p1": "Pastry and confectionery are made here. Good coffee should be a joy for everyone — that is why our prices stay honest, so a small pleasure is possible every day.",
-    "p2": "We will be open around the clock, on a visible first line beside the Islamic University, where there is almost no place like this."
-  },
-  "offerings": {
-    "title": "What we bake and pour",
-    "lead": "Every day we join the scent of fresh baking with the taste of real coffee.",
-    "pastry": "Puff pastry",
-    "confectionery": "Confectionery",
-    "bread": "Bread",
-    "breakfasts": "Breakfasts",
-    "coffee": "Coffee"
-  },
-  "location": {
-    "title": "Where we are",
-    "p1": "A convenient, visible place beside the Islamic University. Comfortable parking — come by car with family or friends.",
-    "p2": "We sit on the first line, easy to find and easy to read from the street.",
-    "directions": "Open in Google Maps",
-    "copy": "Copy address",
-    "copied": "Copied to clipboard"
-  },
-  "atmosphere": {
-    "title": "Character, without the distance",
-    "lead": "There is character, aesthetics, and a little ceremony. The main thing is this: we stay open to everyone.",
-    "items": {
-      "interior": "Atmosphere and interior",
-      "assortment": "Assortment and presentation",
-      "guests": "The people we serve",
-      "style": "The visual language of the brand",
-      "idea": "The idea we tell",
-      "service": "A high level of service"
+    "badge": "Heritage & Vision",
+    "title": "One House. Two Traditions.",
+    "lead": "Where timeless French pâtisserie mastery meets the legendary warmth of Medina hospitality.",
+    "p1": "Fistashion was born from a singular conviction: genuine luxury should not feel cold or distant. From our 27-layer laminated puff pastries to our house-roasted Mediterranean pistachios, every creation is crafted by hand under the eyes of our master bakers.",
+    "p2": "Situated on a prominent first line beside the Islamic University, our grand salon welcomes scholars, families, travelers, and coffee connoisseurs for quiet dawn reflections and joyful evening gatherings.",
+    "pillars": {
+      "pistache": {
+        "title": "Pistache d'Or",
+        "desc": "Rare Mediterranean & Bronte pistachios, stone-ground into silky in-house praline."
+      },
+      "lart": {
+        "title": "L'Art Français",
+        "desc": "72-hour cold fermentation and 100% French Normandy butter lamination."
+      },
+      "cafe": {
+        "title": "Specialty Roast",
+        "desc": "Direct-trade single-origin beans, precision-calibrated for exquisite balance."
+      }
     }
   },
+  "menu": {
+    "badge": "Culinary Repertoire",
+    "title": "Signature Creations & Tasting Notes",
+    "lead": "Each recipe is an ode to craftsmanship, balancing buttery flakiness with roasted pistachio depth.",
+    "categories": {
+      "all": "All Signatures",
+      "viennoiserie": "Viennoiserie",
+      "pastry": "Haute Pâtisserie",
+      "coffee": "Specialty Coffee",
+      "savory": "Breakfast & Savory"
+    },
+    "items": [
+      {
+        "id": "croissant-pistache",
+        "category": "viennoiserie",
+        "name": "Le Croissant Suprême Pistache",
+        "arabicName": "كرواسون الفستق الملكي",
+        "desc": "27 delicate layers of golden French puff pastry filled with velvety in-house pistachio cream, crowned with roasted Sicilian emerald pistachios.",
+        "tag": "Signature Masterpiece",
+        "notes": "Crisp Normandy butter • House praline • Sea salt note"
+      },
+      {
+        "id": "tarte-pistache",
+        "category": "pastry",
+        "name": "Tartelette Pistache & Fleur d'Oranger",
+        "arabicName": "تارت الفستق وزهر البرتقال",
+        "desc": "Delicate sablé breton crust, infused pistachio ganache, roasted pistachio crunch, and an aromatic whisper of orange blossom.",
+        "tag": "Chef's Selection",
+        "notes": "Pure pistachio ganache • Orange blossom • Crunchy sablé"
+      },
+      {
+        "id": "pain-chocolat",
+        "category": "viennoiserie",
+        "name": "Pain au Chocolat Gianduja",
+        "arabicName": "بان أو شوكولا بالبندق",
+        "desc": "Slow-leavened buttery dough cradling double Valrhona dark chocolate batons and roasted hazelnut praline.",
+        "tag": "Classic Heritage",
+        "notes": "Valrhona 66% • French butter • Caramelized flakes"
+      },
+      {
+        "id": "latte-fistashion",
+        "category": "coffee",
+        "name": "Fistashion Signature Pistachio Latte",
+        "arabicName": "لاتيه فيستاشيون الخاص",
+        "desc": "Double shot of single-origin Colombian espresso blended with silky steamed milk and our artisanal Mediterranean pistachio reduction.",
+        "tag": "House Favorite",
+        "notes": "Nutty crema • Silky texture • Subtle sweetness"
+      },
+      {
+        "id": "v60-yirgacheffe",
+        "category": "coffee",
+        "name": "V60 Single-Origin Ethiopian Reserve",
+        "arabicName": "قهوة مقطرة إثيوبية فاخرة",
+        "desc": "Lightly roasted heirloom beans from Yirgacheffe, hand-dripped to unlock jasmine floral aromas and citrus bergamot brightness.",
+        "tag": "Specialty Filter",
+        "notes": "Jasmine floral • Bergamot • Honey sweetness"
+      },
+      {
+        "id": "brioche-feuilletee",
+        "category": "savory",
+        "name": "Brioche Feuilletée & Truffle Fromage",
+        "arabicName": "بريوش مورق بالجبن والكمأة",
+        "desc": "Airy braided brioche layered with artisanal Gruyère cheese and a touch of black summer truffle, baked golden brown.",
+        "tag": "Gourmet Savory",
+        "notes": "Melted aged cheese • Earthy truffle • Flaky crumb"
+      }
+    ]
+  },
+  "offerings": {
+    "badge": "Bespoke Repertoire",
+    "title": "Fresh Daily from Our Ovens",
+    "lead": "From early dawn to late evening, our bakers and baristas maintain an unwavering standard of excellence.",
+    "pastry": "Puff Pastry & Viennoiserie",
+    "confectionery": "Haute Pâtisserie",
+    "bread": "Artisanal Breads",
+    "breakfasts": "Signature Breakfasts",
+    "coffee": "Specialty Coffee Bar",
+    "noteTitle": "Private Tasting & Bespoke Gifting",
+    "noteDesc": "Custom emerald-and-gold gift hampers, corporate dessert boxes, and private event catering tailored to your celebration."
+  },
+  "atmosphere": {
+    "badge": "Sensory Architecture",
+    "title": "Character Without Distance",
+    "lead": "We designed our Medina salon as a serene sanctuary where aesthetic beauty meets effortless comfort.",
+    "items": {
+      "interior": "White Calacatta marble, custom emerald millwork, and glowing brass halo chandeliers.",
+      "assortment": "Uncompromising French baking techniques combined with regional pistachio heritage.",
+      "guests": "Scholars, families, travelers, and morning coffee seekers united in conversation.",
+      "style": "A discreet visual language of gold hairlines, fine linens, and bespoke porcelain.",
+      "idea": "Luxury made generous — honest pricing that makes artisan pleasure a daily ritual.",
+      "service": "Attentive, graceful service rooted in the venerable tradition of Madinah hospitality."
+    }
+  },
+  "experience": {
+    "badge": "Guest Amenities",
+    "title": "Thoughtfully Designed For You",
+    "lead": "Everything you need to know before visiting our flagship salon.",
+    "cards": {
+      "location": {
+        "title": "First Line & Valet Parking",
+        "desc": "Located directly on the primary avenue beside the Islamic University of Madinah, with ample dedicated parking for cars and families."
+      },
+      "hours": {
+        "title": "7:00 AM – Midnight Daily",
+        "desc": "Fresh morning viennoiserie hot out of the ovens from early dawn, through relaxed afternoon tea and late evening coffee."
+      },
+      "ambience": {
+        "title": "Family & Executive Salon",
+        "desc": "Spacious seating options, from private booths for family comfort to sunlit marble tables ideal for reading and thoughtful discussion."
+      },
+      "gifting": {
+        "title": "Luxury Emerald Gift Boxes",
+        "desc": "Pre-order signature dessert boxes adorned with embossed gold foil — an honorable gift for gatherings and honored visits."
+      }
+    }
+  },
+  "location": {
+    "badge": "Flagship Destination",
+    "title": "Visit Us in Medina",
+    "p1": "Commanding a prime first-line position beside the Islamic University, Fistashion is a landmark of architectural elegance and culinary delight.",
+    "p2": "Effortlessly accessible from Prince Naif Road and the central districts, featuring comfortable parking for families and visiting guests.",
+    "addressTitle": "Address",
+    "hoursTitle": "Hours",
+    "hoursValue": "7:00 AM – Midnight Daily",
+    "serviceTitle": "Service",
+    "serviceValue": "Dine-In • Takeaway • Gifting",
+    "directions": "Open in Google Maps",
+    "copy": "Copy Full Address",
+    "copied": "Address Copied!"
+  },
   "franchise": {
-    "title": "Grow the house with us",
-    "lead": "We are open to partners who want to develop this project. If you want to build a Fistashion of your own, write — we will talk through the details.",
-    "name": "Name",
-    "contact": "Email or phone",
-    "city": "City",
-    "message": "Message",
-    "submit": "Send inquiry",
-    "success": "Your mail app should open with the inquiry. If it does not, write to us directly.",
-    "copyEmail": "Copy email",
-    "copied": "Copied",
+    "badge": "Partnership & Growth",
+    "title": "Grow the House With Us",
+    "lead": "We invite visionary partners and investors to expand the Fistashion standard across the Kingdom and beyond. Join a turnkey culinary brand with proven margins and exceptional guest loyalty.",
+    "perk1Title": "Turnkey Architectural Blueprints",
+    "perk1Desc": "Complete interior specifications, Calacatta marble procurement guides, and signature emerald fixture standards.",
+    "perk2Title": "Exclusive Ingredient Supply Chain",
+    "perk2Desc": "Direct access to our Mediterranean pistachio orchards, French Normandy butter partners, and master coffee roasters.",
+    "perk3Title": "Barista & Pastry Academy",
+    "perk3Desc": "Rigorous hands-on curriculum, operational playbooks, and continuous culinary audits to safeguard brand prestige.",
+    "name": "Full Name",
+    "contact": "Email or Phone Number",
+    "city": "Target City / Region",
+    "message": "Investment Vision / Message",
+    "submit": "Submit Partnership Inquiry",
+    "success": "Thank you. Your email client will open with your inquiry details. Alternatively, email us directly.",
+    "copyEmail": "Copy Investor Email",
+    "copied": "Email Copied!",
     "errors": {
-      "name": "Please tell us your name.",
-      "contact": "Please leave an email or a phone number.",
-      "message": "Please write a short message."
+      "name": "Please provide your full name.",
+      "contact": "Please provide an email or phone number.",
+      "message": "Please share a brief note about your inquiry."
     }
   },
   "footer": {
-    "rights": "The Bakery House, Medina"
+    "line": "The Bakery House • Medina Al-Munawwarah",
+    "rights": "All rights reserved. Fistashion The Bakery House."
   }
 }

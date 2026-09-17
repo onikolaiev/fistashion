@@ -11,12 +11,6 @@ type CinematicBackdropProps = {
   children?: React.ReactNode;
 };
 
-const OVERLAY: Record<Overlay, string> = {
-  hero: "bg-gradient-to-b from-green/40 via-green/10 to-green/55",
-  scene: "bg-gradient-to-b from-green/30 via-green/25 to-green/80",
-  section: "bg-gradient-to-b from-green/75 via-green/70 to-green/85",
-};
-
 export function CinematicBackdrop({
   src,
   alt = "",
@@ -39,9 +33,33 @@ export function CinematicBackdrop({
         alt={alt}
         className={`h-full w-full object-cover ${imgClassName ?? "object-[center_62%]"} ${motion === "kenburns" ? "kenburns" : ""}`}
       />
-      <div className={`absolute inset-0 ${OVERLAY[overlay]}`} />
+
+      {overlay === "hero" ? (
+        <>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/20 to-transparent md:from-black/45 md:via-black/10" />
+          <div
+            className="absolute inset-0 opacity-80"
+            style={{
+              background:
+                "radial-gradient(ellipse 55% 50% at 72% 62%, rgba(232,213,163,0.1) 0%, rgba(232,213,163,0.03) 30%, transparent 62%)",
+            }}
+          />
+          <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,0.28),inset_0_-60px_80px_rgba(0,0,0,0.35)]" />
+        </>
+      ) : overlay === "scene" ? (
+        <>
+          <div className="absolute inset-0 bg-gradient-to-b from-green/30 via-green/20 to-green/75" />
+          <div className="absolute inset-0 shadow-[inset_0_0_180px_rgba(7,20,13,0.55)]" />
+        </>
+      ) : (
+        <>
+          <div className="absolute inset-0 bg-gradient-to-b from-green/75 via-green/70 to-green/85" />
+          <div className="absolute inset-0 shadow-[inset_0_0_180px_rgba(7,20,13,0.55)]" />
+        </>
+      )}
+
       {children}
-      <div className="absolute inset-0 shadow-[inset_0_0_180px_rgba(7,20,13,0.55)]" />
     </div>
   );
 }

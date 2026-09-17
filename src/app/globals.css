@@ -1,35 +1,72 @@
 @import "tailwindcss";
 
 :root {
-  --green: #0f2418;
-  --green-mid: #163222;
-  --green-deep: #07140d;
-  --gold: #e8d5a3;
-  --gold-muted: #c4b48a;
+  /* Light Luxury & French/Arabian Bakery Palette */
+  --bg-cream: #FAF7F2;
+  --bg-cream-soft: #F4EFE6;
+  --bg-cream-pure: #FCFAF6;
+  --bg-sand: #EFE9DE;
+  
+  /* Brand Emerald */
+  --green: #0F2418;
+  --green-dark: #091810;
+  --green-mid: #1A3828;
+  --green-soft: #234B36;
+  
+  /* Gold Accents */
+  --gold: #C5A25D;
+  --gold-light: #DFC793;
+  --gold-pale: #F3E9D2;
+  --gold-dark: #8F6F33;
+  
+  /* Text Neutrals */
+  --charcoal: #1C2420;
+  --charcoal-muted: #56645D;
+  --charcoal-light: #839189;
+  
+  /* Borders */
+  --border-gold: rgba(197, 162, 93, 0.28);
+  --border-gold-subtle: rgba(197, 162, 93, 0.16);
+  --border-dark: rgba(15, 36, 24, 0.12);
 }
 
 @theme inline {
+  --color-cream: var(--bg-cream);
+  --color-cream-soft: var(--bg-cream-soft);
+  --color-cream-pure: var(--bg-cream-pure);
+  --color-sand: var(--bg-sand);
+  
   --color-green: var(--green);
+  --color-green-dark: var(--green-dark);
   --color-green-mid: var(--green-mid);
-  --color-green-deep: var(--green-deep);
+  --color-green-soft: var(--green-soft);
+  
   --color-gold: var(--gold);
-  --color-gold-muted: var(--gold-muted);
+  --color-gold-light: var(--gold-light);
+  --color-gold-pale: var(--gold-pale);
+  --color-gold-dark: var(--gold-dark);
+  
+  --color-charcoal: var(--charcoal);
+  --color-charcoal-muted: var(--charcoal-muted);
+  --color-charcoal-light: var(--charcoal-light);
+
   --font-serif: var(--font-serif-face);
   --font-sans: var(--font-sans-face);
   --font-arabic: var(--font-arabic-face);
 }
 
 html {
-  background: var(--green);
-  color: var(--gold);
+  background-color: var(--bg-cream);
+  color: var(--charcoal);
   scroll-behavior: smooth;
 }
 
 body {
-  background: var(--green);
-  color: var(--gold);
+  background-color: var(--bg-cream);
+  color: var(--charcoal);
   font-family: var(--font-sans), var(--font-arabic), sans-serif;
   min-height: 100%;
+  overflow-x: hidden;
 }
 
 html[lang="ar"] body {
@@ -38,42 +75,37 @@ html[lang="ar"] body {
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
   font-family: var(--font-serif), var(--font-arabic), serif;
   font-weight: 500;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
 }
 
 html[lang="ar"] h1,
 html[lang="ar"] h2,
-html[lang="ar"] h3 {
+html[lang="ar"] h3,
+html[lang="ar"] h4 {
   font-family: var(--font-arabic), var(--font-serif), serif;
 }
 
 ::selection {
-  background: var(--gold);
-  color: var(--green);
+  background: var(--gold-light);
+  color: var(--green-dark);
 }
 
-.kenburns {
-  transform: scale(1.08);
-  animation: kenburns 36s ease-in-out infinite alternate;
-}
-
-.lamp-glow {
-  animation: lamp-glow 5.5s ease-in-out infinite;
-}
-
-.hero-copy {
-  animation: hero-in 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+/* Subtle luxury grain texture overlay */
+.luxury-noise {
+  background-image: radial-gradient(rgba(15, 36, 24, 0.03) 1px, transparent 0);
+  background-size: 24px 24px;
 }
 
 .reveal {
   opacity: 0;
-  transform: translateY(36px);
+  transform: translateY(28px);
   transition:
-    opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .reveal-in {
@@ -82,114 +114,18 @@ html[lang="ar"] h3 {
 }
 
 .reveal-media {
-  transform: translateY(28px) scale(0.985);
+  transform: translateY(24px) scale(0.99);
 }
 
 .reveal-media.reveal-in {
   transform: translateY(0) scale(1);
 }
 
-.steam-wisp {
-  position: absolute;
-  bottom: 0;
-  border-radius: 999px;
-  background: radial-gradient(
-    ellipse at 50% 70%,
-    rgba(255, 248, 230, 0.55),
-    rgba(232, 213, 163, 0.18) 48%,
-    transparent 76%
-  );
-  mix-blend-mode: screen;
-  transform-origin: 50% 100%;
-  animation-name: steam-rise;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-}
-
-.steam-wisp-static {
-  animation: none;
-  opacity: 0.14;
-  transform: translate3d(0, -28%, 0);
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  [data-hero-backdrop],
-  [data-hero-glass],
-  [data-hero-badge],
-  [data-hero-title],
-  [data-hero-city],
-  [data-hero-cta] {
-    opacity: 0;
-  }
-}
-
-@keyframes kenburns {
-  from {
-    transform: scale(1.08) translate3d(0, 0, 0);
-  }
-  to {
-    transform: scale(1.18) translate3d(0, -2.5%, 0);
-  }
-}
-
-@keyframes hero-in {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes steam-rise {
-  0% {
-    transform: translate3d(0, 12%, 0) scale(0.55, 0.42);
-    opacity: 0;
-  }
-  16% {
-    opacity: var(--steam-opacity, 0.36);
-  }
-  100% {
-    transform: translate3d(var(--steam-drift, 0px), -110%, 0) scale(1.28, 1.55);
-    opacity: 0;
-  }
-}
-
-@keyframes lamp-glow {
-  0%,
-  100% {
-    opacity: 0.35;
-    transform: translateX(-50%) scale(1);
-  }
-  50% {
-    opacity: 0.7;
-    transform: translateX(-50%) scale(1.12);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .kenburns,
-  .lamp-glow,
-  .hero-copy,
-  .steam-wisp {
-    animation: none;
-  }
-
   .reveal,
   .reveal-media {
     opacity: 1;
     transform: none;
     transition: none;
-  }
-
-  [data-hero-backdrop],
-  [data-hero-glass],
-  [data-hero-badge],
-  [data-hero-title],
-  [data-hero-city],
-  [data-hero-cta] {
-    opacity: 1;
   }
 }

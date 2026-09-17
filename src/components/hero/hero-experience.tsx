@@ -1,265 +1,345 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { CinematicBackdrop } from "@/components/cinematic-backdrop";
-import { SteamEffect } from "@/components/hero/steam-effect";
-import { Logo } from "@/components/logo";
+import { assetPath } from "@/lib/site";
 
 type HeroExperienceProps = {
   badge: string;
   city: string;
+  subline: string;
+  tagline: string;
+  lead: string;
   ctaLocation: string;
+  ctaMenu: string;
   ctaFranchise: string;
+  feature1: string;
+  feature2: string;
+  feature3: string;
+  feature4: string;
+  dessertCardTitle: string;
+  dessertCardSubtitle: string;
 };
-
-// Exact coordinates of the coffee cup foam rim inside hero-coffee-v4.png (1280x720)
-// Cup opening left rim: 749, right rim: 859 -> Exact horizontal center: 804.0
-// Cup opening top rim: 418-422 -> Exact top level: 420.0
-const CUP_NATURAL_X = 804.0;
-const CUP_NATURAL_Y = 420.0;
-const IMG_NW = 1280;
-const IMG_NH = 720;
 
 export function HeroExperience({
   badge,
   city,
+  subline,
+  lead,
   ctaLocation,
-  ctaFranchise,
+  ctaMenu,
+  feature1,
+  feature2,
+  feature3,
+  feature4,
+  dessertCardTitle,
+  dessertCardSubtitle,
 }: HeroExperienceProps) {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [reducedMotion, setReducedMotion] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-  const [steamAnchor, setSteamAnchor] = useState<{ x: number; y: number; scale: number } | null>(null);
-
-  const updateSteamPosition = useCallback(() => {
-    const section = sectionRef.current;
-    if (!section) return;
-
-    const img = section.querySelector<HTMLImageElement>("img");
-    if (!img) return;
-
-    const nw = img.naturalWidth || IMG_NW;
-    const nh = img.naturalHeight || IMG_NH;
-    const rect = img.getBoundingClientRect();
-
-    const scale = Math.max(rect.width / nw, rect.height / nh);
-    const sw = nw * scale;
-    const sh = nh * scale;
-
-    const isSmall = rect.width < 768;
-    const posX = isSmall ? 0.75 : 0.58;
-    const posY = 0.50;
-
-    const ox = (rect.width - sw) * posX;
-    const oy = (rect.height - sh) * posY;
-
-    const x = ox + CUP_NATURAL_X * scale;
-    const y = oy + CUP_NATURAL_Y * scale;
-
-    setSteamAnchor({ x, y, scale });
-  }, []);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const mobile = window.matchMedia("(max-width: 767px)");
-    const sync = () => {
-      setReducedMotion(motion.matches);
-      setIsMobile(mobile.matches);
-    };
-    sync();
-    motion.addEventListener("change", sync);
-    mobile.addEventListener("change", sync);
-    return () => {
-      motion.removeEventListener("change", sync);
-      mobile.removeEventListener("change", sync);
-    };
-  }, []);
-
-  useEffect(() => {
-    updateSteamPosition();
-    window.addEventListener("resize", updateSteamPosition);
-    const section = sectionRef.current;
-    const img = section?.querySelector<HTMLImageElement>("img");
-    if (img && !img.complete) {
-      img.addEventListener("load", updateSteamPosition, { once: true });
-    }
-    return () => {
-      window.removeEventListener("resize", updateSteamPosition);
-    };
-  }, [updateSteamPosition]);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section || reducedMotion) {
-      return undefined;
-    }
+    const root = containerRef.current;
+    if (!root) return;
 
     gsap.registerPlugin(ScrollTrigger);
 
-    const backdrop = section.querySelector("[data-hero-backdrop]");
-    const copy = section.querySelector("[data-hero-copy]");
-    const badgeEl = section.querySelector("[data-hero-badge]");
-    const titleEl = section.querySelector("[data-hero-title]");
-    const cityEl = section.querySelector("[data-hero-city]");
-    const ctaEl = section.querySelector("[data-hero-cta]");
+    const titleLetters = root.querySelectorAll("[data-hero-char]");
+    const fadeEls = root.querySelectorAll("[data-hero-fade]");
+    const visual = root.querySelector("[data-hero-visual]");
+    const bgImage = root.querySelector("[data-hero-bg]");
 
-    const intro = gsap.timeline({ defaults: { ease: "power2.out" } });
-    intro
-      .fromTo(backdrop, { opacity: 0, scale: 1.04 }, { opacity: 1, scale: 1, duration: 1.6 }, 0)
-      .fromTo(
-        badgeEl,
-        { opacity: 0, y: 16 },
-        { opacity: 1, y: 0, duration: 0.85 },
-        0.3,
-      )
-      .fromTo(
-        titleEl,
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.95 },
-        0.45,
-      )
-      .fromTo(
-        cityEl,
-        { opacity: 0, y: 14 },
-        { opacity: 1, y: 0, duration: 0.8 },
-        0.7,
-      )
-      .fromTo(
-        ctaEl,
-        { opacity: 0, y: 12 },
-        { opacity: 1, y: 0, duration: 0.75 },
-        0.9,
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+    if (bgImage) {
+      tl.fromTo(
+        bgImage,
+        { scale: 1.05, opacity: 0 },
+        { scale: 1, opacity: 0.9, duration: 1.4, ease: "power2.out" },
+        0,
       );
+    }
 
-    const scroll = gsap.timeline({
+    if (titleLetters.length > 0) {
+      tl.fromTo(
+        titleLetters,
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.9, stagger: 0.035 },
+        0.1,
+      );
+    }
+
+    if (fadeEls.length > 0) {
+      tl.fromTo(
+        fadeEls,
+        { y: 16, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, stagger: 0.08 },
+        0.25,
+      );
+    }
+
+    if (visual) {
+      tl.fromTo(
+        visual,
+        { y: 25, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1.1, ease: "power2.out" },
+        0.2,
+      );
+    }
+
+    // Gentle scroll parallax
+    const scrollTl = gsap.timeline({
       scrollTrigger: {
-        trigger: section,
+        trigger: root,
         start: "top top",
         end: "bottom top",
-        scrub: 0.7,
+        scrub: 0.6,
       },
     });
-    scroll
-      .to(copy, { y: -36, opacity: 0, ease: "none" }, 0)
-      .to(backdrop, { yPercent: 6, ease: "none" }, 0);
 
-    const target = { x: 0, y: 0 };
-    const current = { x: 0, y: 0 };
-    let frame = 0;
-
-    const onMove = (event: MouseEvent) => {
-      const rect = section.getBoundingClientRect();
-      target.x = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
-      target.y = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
-    };
-
-    const tick = () => {
-      current.x += (target.x - current.x) * 0.04;
-      current.y += (target.y - current.y) * 0.04;
-      if (backdrop instanceof HTMLElement) {
-        backdrop.style.transform = `scale(1.02) translate3d(${current.x * 6}px, ${current.y * 4}px, 0)`;
-      }
-      frame = window.requestAnimationFrame(tick);
-    };
-
-    if (!isMobile) {
-      section.addEventListener("mousemove", onMove);
-      frame = window.requestAnimationFrame(tick);
+    if (visual) {
+      scrollTl.to(visual, { y: 30, ease: "none" }, 0);
+    }
+    if (bgImage) {
+      scrollTl.to(bgImage, { y: 40, ease: "none" }, 0);
     }
 
     return () => {
-      intro.kill();
-      scroll.scrollTrigger?.kill();
-      scroll.kill();
-      section.removeEventListener("mousemove", onMove);
-      window.cancelAnimationFrame(frame);
+      tl.kill();
+      scrollTl.scrollTrigger?.kill();
+      scrollTl.kill();
     };
-  }, [isMobile, reducedMotion]);
+  }, []);
+
+  const brandName = "FISTASHION";
 
   return (
     <section
-      ref={sectionRef}
+      ref={containerRef}
       id="top"
-      className="relative flex min-h-svh flex-col justify-start md:justify-center overflow-hidden px-6 pb-12 pt-24 md:pt-28 md:px-12 lg:px-16"
+      className="relative flex min-h-[82vh] items-center overflow-hidden bg-cream px-6 pt-24 pb-12 md:min-h-[86vh] md:px-12 md:pt-28 md:pb-16"
     >
-      <CinematicBackdrop
-        src="/scenes/hero-coffee-v4.png"
-        overlay="hero"
-        layer="hero-backdrop"
-        motion="still"
-        imgClassName="object-[75%_50%] md:object-[58%_50%]"
-      >
-        {/* Living animated steam anchored directly to the coffee cup opening */}
-        {steamAnchor && (
-          <div
-            className="pointer-events-none absolute z-15 will-change-transform"
-            style={{
-              left: steamAnchor.x,
-              top: steamAnchor.y,
-            }}
-            aria-hidden="true"
-          >
-            <div className="-translate-x-1/2 -translate-y-[calc(100%-10px)]">
-              <SteamEffect
-                width={Math.round(220 * Math.min(Math.max(steamAnchor.scale, 0.8), 1.5))}
-                height={Math.round(320 * Math.min(Math.max(steamAnchor.scale, 0.8), 1.5))}
-                opacity={0.88}
-                cupScale={steamAnchor.scale}
-                reducedMotion={reducedMotion}
+      {/* 1. Vibrant, Clearly Visible Grand Salon Background */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          data-hero-bg
+          src={assetPath("/scenes/photo-hero-backdrop.png")}
+          alt=""
+          className="h-full w-full object-cover object-[center_35%] opacity-90 contrast-[1.05] brightness-[1.03] md:object-[center_30%]"
+        />
+
+        {/* Soft radial reading aura strictly behind left text block, leaving the center and right grand salon clearly visible */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse 70% 85% at 20% 50%, rgba(250, 247, 242, 0.94) 0%, rgba(250, 247, 242, 0.86) 42%, rgba(250, 247, 242, 0.35) 72%, transparent 100%)",
+          }}
+        />
+
+        {/* Seamless top and bottom blending */}
+        <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-cream via-cream/80 to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-cream-pure via-cream-pure/60 to-transparent" />
+
+        {/* Warm golden light glow over chandeliers */}
+        <div
+          className="absolute inset-0 opacity-35"
+          style={{
+            background:
+              "radial-gradient(circle at 75% 25%, rgba(223, 199, 147, 0.5) 0%, transparent 60%)",
+          }}
+        />
+
+        {/* Subtle luxury grain */}
+        <div className="absolute inset-0 opacity-[0.02] luxury-noise" />
+      </div>
+
+      {/* 2. Delicate Architectural Hairline Frame with Corner Accents */}
+      <div className="pointer-events-none absolute inset-3 hidden rounded-3xl border border-gold/30 sm:block md:inset-6">
+        {/* Corner Accents */}
+        <div className="absolute -top-1.5 -left-1.5 h-3 w-3 rounded-full border border-gold/70 bg-cream" />
+        <div className="absolute -top-1.5 -right-1.5 h-3 w-3 rounded-full border border-gold/70 bg-cream" />
+        <div className="absolute -bottom-1.5 -left-1.5 h-3 w-3 rounded-full border border-gold/70 bg-cream" />
+        <div className="absolute -bottom-1.5 -right-1.5 h-3 w-3 rounded-full border border-gold/70 bg-cream" />
+
+        {/* Top edge watermark coordinate */}
+        <div className="absolute top-3 right-6 hidden text-[10px] font-semibold tracking-[0.24em] text-gold-dark/90 md:block">
+          24°28′05″N 39°33′45″E • AL JAMIAH, MADINAH
+        </div>
+
+        {/* Bottom edge watermark label */}
+        <div className="absolute bottom-3 left-6 hidden text-[10px] font-semibold tracking-[0.22em] text-gold-dark/90 md:block">
+          THE BAKERY HOUSE • HAUTE PÂTISSERIE & SPECIALTY COFFEE
+        </div>
+      </div>
+
+      {/* 3. Main Hero Content Grid */}
+      <div className="relative z-10 mx-auto w-full max-w-7xl">
+        <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-8">
+          
+          {/* Left Column: Haute Typography, Heritage & Key Features */}
+          <div className="flex flex-col items-center text-center lg:col-span-6 lg:items-start lg:text-start">
+            
+            {/* Top pill badge */}
+            <div
+              data-hero-fade
+              className="inline-flex items-center gap-2 rounded-full border border-gold/45 bg-cream-pure/95 px-4 py-1.5 shadow-xs backdrop-blur-md"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={assetPath("/brand/logo-mark.svg")}
+                alt=""
+                className="h-3.5 w-3.5 object-contain"
+                aria-hidden="true"
               />
+              <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-gold-dark">
+                {badge}
+              </span>
+            </div>
+
+            {/* Main Brand Title */}
+            <h1 className="mt-3.5 flex flex-wrap justify-center overflow-hidden font-serif text-[clamp(2.75rem,6.8vw,5.25rem)] font-bold tracking-[0.08em] text-green lg:justify-start">
+              {brandName.split("").map((char, index) => (
+                <span
+                  key={index}
+                  data-hero-char
+                  className="inline-block"
+                >
+                  {char}
+                </span>
+              ))}
+            </h1>
+
+            {/* Arabic Script & Subline */}
+            <div data-hero-fade className="mt-2 space-y-1">
+              <p className="font-arabic text-2xl font-medium text-gold-dark md:text-3xl">
+                فيستاشيون — دار المخبوزات والقهوة المختصة
+              </p>
+              <p className="font-serif text-sm uppercase tracking-[0.28em] text-charcoal-muted md:text-base">
+                {subline} • {city}
+              </p>
+            </div>
+
+            {/* Editorial Narrative */}
+            <p
+              data-hero-fade
+              className="mt-3.5 max-w-xl text-base leading-relaxed text-charcoal md:text-lg"
+            >
+              {lead}
+            </p>
+
+            {/* Action buttons */}
+            <div
+              data-hero-fade
+              className="mt-5 flex flex-wrap items-center justify-center gap-4 lg:justify-start"
+            >
+              <a
+                href="#location"
+                className="group relative inline-flex items-center gap-3 rounded-full bg-green px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.18em] text-cream-pure shadow-lg shadow-green/25 transition-all hover:bg-green-mid hover:shadow-xl"
+              >
+                <span>{ctaLocation}</span>
+                <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
+              </a>
+              <a
+                href="#menu"
+                className="inline-flex items-center gap-2 rounded-full border border-gold/50 bg-cream-pure/90 px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.16em] text-charcoal shadow-xs backdrop-blur-md transition-all hover:border-gold hover:bg-gold-pale/50"
+              >
+                <span>{ctaMenu}</span>
+              </a>
+            </div>
+
+            {/* Structured Luxury Feature Strip */}
+            <div
+              data-hero-fade
+              className="mt-7 w-full max-w-xl rounded-2xl border border-gold/35 bg-cream-pure/90 p-4 shadow-md backdrop-blur-md"
+            >
+              <div className="grid grid-cols-3 gap-3 text-center sm:gap-4">
+                <div className="px-1">
+                  <p className="font-serif text-base font-bold text-green sm:text-lg">Normandy</p>
+                  <p className="text-[10px] uppercase tracking-wider text-charcoal-muted">{feature1}</p>
+                </div>
+                <div className="border-x border-gold/25 px-1">
+                  <p className="font-serif text-base font-bold text-green sm:text-lg">Pistache</p>
+                  <p className="text-[10px] uppercase tracking-wider text-charcoal-muted">{feature2}</p>
+                </div>
+                <div className="px-1">
+                  <p className="font-serif text-base font-bold text-green sm:text-lg">Arabica</p>
+                  <p className="text-[10px] uppercase tracking-wider text-charcoal-muted">{feature3}</p>
+                </div>
+              </div>
+
+              {/* Sub-strip detail */}
+              <div className="mt-3 border-t border-gold/15 pt-2 text-center text-[11px] font-medium tracking-wide text-charcoal-light">
+                {feature4} • Parking Dedicated
+              </div>
+            </div>
+
+          </div>
+
+          {/* Right Column: Grand Visual Showcase */}
+          <div className="relative lg:col-span-6">
+            <div
+              data-hero-visual
+              className="relative mx-auto w-full max-w-xl"
+            >
+              {/* Outer decorative gold frame border */}
+              <div className="absolute -inset-3 rounded-[2.5rem] border border-gold/45 p-2 shadow-md sm:-inset-4 sm:rounded-[3rem]" />
+              
+              {/* Main Image Container (Saudi guests in red shemagh) */}
+              <div className="relative aspect-[16/11] overflow-hidden rounded-[2rem] bg-cream-soft shadow-2xl ring-1 ring-gold/30 sm:rounded-[2.5rem]">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={assetPath("/scenes/photo-salon-saudi-men.png")}
+                  alt="Saudi guests in traditional attire enjoying coffee and fresh bakery at Fistashion Medina"
+                  className="h-full w-full object-cover object-center transition-transform duration-700 hover:scale-105"
+                />
+
+                {/* Subtle soft gradient over image bottom */}
+                <div className="absolute inset-0 bg-gradient-to-t from-green-dark/55 via-transparent to-transparent" />
+                
+                {/* Floating badge inside image */}
+                <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between rounded-xl border border-cream-pure/20 bg-green/90 px-5 py-3.5 text-cream-pure shadow-lg backdrop-blur-md">
+                  <div>
+                    <p className="font-serif text-sm font-semibold tracking-wide text-gold-light">
+                      The Salon Experience
+                    </p>
+                    <p className="text-xs text-cream-pure/80">
+                      Medina Hospitality & Artisanal Bakery
+                    </p>
+                  </div>
+                  <span className="rounded-full bg-gold/25 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-gold-pale">
+                    Open Daily
+                  </span>
+                </div>
+              </div>
+
+              {/* Floating secondary accent card (Signature Pistache Dessert) */}
+              <div className="absolute -bottom-7 -left-5 hidden w-52 overflow-hidden rounded-2xl border-2 border-cream-pure bg-cream p-2 shadow-2xl sm:block md:-bottom-8 md:-left-8 md:w-56">
+                <div className="relative aspect-square overflow-hidden rounded-xl">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={assetPath("/scenes/photo-pistachio-dessert.png")}
+                    alt="Signature Pistachio Dessert Tart"
+                    className="h-full w-full object-cover transition-transform duration-500 hover:scale-110"
+                  />
+                  <div className="absolute top-2 left-2 rounded-full bg-green/85 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-cream-pure backdrop-blur-xs">
+                    Maison
+                  </div>
+                </div>
+                <div className="pt-2 text-center">
+                  <p className="font-serif text-xs font-bold text-green">
+                    {dessertCardTitle}
+                  </p>
+                  <p className="text-[10px] text-charcoal-muted">
+                    {dessertCardSubtitle}
+                  </p>
+                </div>
+              </div>
+
             </div>
           </div>
-        )}
-      </CinematicBackdrop>
 
-      <div
-        data-hero-copy
-        className="relative z-20 mx-auto flex w-full max-w-6xl flex-col items-center text-center md:items-start md:text-start"
-      >
-        <div className="max-w-md lg:max-w-lg">
-          <p
-            data-hero-badge
-            className="text-[11px] uppercase tracking-[0.28em] text-gold-muted"
-          >
-            {badge}
-          </p>
-          <div data-hero-title className="mt-3 md:mt-5 text-gold">
-            <span className="inline-flex origin-center scale-110 md:scale-125 md:origin-left">
-              <Logo variant="mark" />
-            </span>
-            <p className="mt-3 font-sans text-2xl tracking-[0.2em] md:text-4xl md:tracking-[0.32em]">
-              FISTASHION
-            </p>
-            <p className="mt-1.5 font-arabic text-xl">فيستاشيون</p>
-            <p className="mt-1.5 text-xs tracking-[0.22em] text-gold-muted md:text-sm">
-              The Bakery House
-            </p>
-          </div>
-          <p
-            data-hero-city
-            className="mt-2.5 text-[11px] uppercase tracking-[0.28em] text-gold-muted md:mt-3"
-          >
-            {city}
-          </p>
-          <div
-            data-hero-cta
-            className="mt-6 flex flex-wrap items-center justify-center gap-3 md:mt-8 md:gap-4 md:justify-start"
-          >
-            <a
-              href="#location"
-              className="border border-gold/50 px-5 py-2.5 text-xs tracking-[0.16em] text-gold transition-colors hover:bg-gold hover:text-green md:px-7 md:py-3"
-            >
-              {ctaLocation}
-            </a>
-            <a
-              href="#franchise"
-              className="border border-gold/20 px-5 py-2.5 text-xs tracking-[0.16em] text-gold-muted transition-colors hover:border-gold/50 hover:text-gold md:px-7 md:py-3"
-            >
-              {ctaFranchise}
-            </a>
-          </div>
         </div>
       </div>
     </section>

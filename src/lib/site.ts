@@ -7,9 +7,10 @@ export const SITE = {
   phoneHref: "tel:+79635988688",
   instagram: "FISTASHION",
   instagramHref: "https://www.instagram.com/fistashion/",
-  street: "Rufaidah Al Ansariyah, Al Jamiah, Madinah 42351",
-  city: "Medina, Saudi Arabia",
-  mapsQuery: "Rufaidah Al Ansariyah, Al Jamiah, Madinah 42351",
+  street: "FHF8+VF4, Al Jamiah, Madinah 42351",
+  city: "Madinah, Saudi Arabia",
+  fullAddress: "FHF8+VF4, Al Jamiah, Madinah 42351, Saudi Arabia",
+  mapsQuery: "FHF8+VF4, Al Jamiah, Madinah 42351, Saudi Arabia",
   domain: "https://fistashion.com",
 } as const;
 
@@ -22,3 +23,9 @@ export const OFFERING_IDS = [
 ] as const;
 
 export type OfferingId = (typeof OFFERING_IDS)[number];
+
+export function assetPath(path: string): string {
+  const base = process.env.NEXT_PUBLIC_BASE_PATH || "";
+  if (!path.startsWith("/")) return path;
+  return `${base}${path}`;
+}

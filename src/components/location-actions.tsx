@@ -19,7 +19,7 @@ export function LocationActions({
 
   const onCopy = async () => {
     try {
-      await navigator.clipboard.writeText(SITE.street);
+      await navigator.clipboard.writeText(SITE.fullAddress);
       setCopied(true);
       setTimeout(() => setCopied(false), 2400);
     } catch {
@@ -33,14 +33,14 @@ export function LocationActions({
         href={mapsUrl}
         target="_blank"
         rel="noreferrer"
-        className="inline-flex items-center gap-2 border border-gold/50 bg-green-mid/40 px-6 py-3 text-xs tracking-[0.14em] text-gold transition-colors hover:bg-gold hover:text-green"
+        className="inline-flex items-center gap-2 rounded-full bg-green px-7 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-cream-pure shadow-md transition-all hover:bg-green-mid hover:shadow-lg"
       >
         <svg
-          className="h-3.5 w-3.5"
+          className="h-4 w-4 text-gold-light"
           fill="none"
-          viewBox="0 0 24 24"
           stroke="currentColor"
           strokeWidth="2"
+          viewBox="0 0 24 24"
           aria-hidden="true"
         >
           <path
@@ -60,20 +60,20 @@ export function LocationActions({
       <button
         type="button"
         onClick={onCopy}
-        className="inline-flex items-center gap-2 border border-gold/20 px-5 py-3 text-xs tracking-[0.14em] text-gold-muted transition-colors hover:border-gold/50 hover:text-gold"
+        className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-cream-soft px-6 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-charcoal transition-all hover:border-gold hover:bg-gold-pale/40"
       >
         <svg
-          className="h-3.5 w-3.5"
+          className="h-4 w-4 text-gold-dark"
           fill="none"
-          viewBox="0 0 24 24"
           stroke="currentColor"
           strokeWidth="2"
+          viewBox="0 0 24 24"
           aria-hidden="true"
         >
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
-            d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
+            d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
           />
         </svg>
         <span>{copied ? copiedLabel : copyLabel}</span>
